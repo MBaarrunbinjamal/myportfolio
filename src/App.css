@@ -1,0 +1,30 @@
+/* 1. Global Reset/Root (Optional) */
+html {
+  /* Standards-based: Supported in Firefox and modern Chrome/Safari (2026) */
+  scrollbar-color: #08b4b4 #02383b; /* thumb color | track color */
+  scrollbar-width: thin; /* auto, thin, or none */
+  
+  /* Prevent layout "jumping" when scrollbars appear */
+  scrollbar-gutter: stable; 
+}
+
+/* 2. WebKit Legacy (Chrome, Safari, Edge) */
+/* Necessary for detailed styling like border-radius and width */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the vertical scrollbar */
+  height: 10px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #02383b; /* Matching the track color above */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #08b4b4; /* Matching the thumb color above */
+  border-radius: 10px;
+  border: 2px solid #02383b; /* Creates a 'padding' effect around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #08b4b4; /* Darken on hover */
+}
