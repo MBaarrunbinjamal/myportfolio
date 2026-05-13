@@ -113,7 +113,7 @@ function About() {
 
          
             <motion.div className="about-buttons" {...fadeUp(0.4)}>
-              {["Read More", "Download CV"].map((label, i) => (
+              {[ "Download CV"].map((label, i) => (
                 <motion.button
                   key={label}
                   className={i === 0 ? "btn-read-more" : "btn-download"}

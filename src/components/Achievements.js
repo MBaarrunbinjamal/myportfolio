@@ -13,7 +13,7 @@ const achievements = [
       "Placed first in a competitive AI-focused web development and content generation competition. The challenge required building a production-ready AI-integrated web application under time constraints, judged on innovation, UI quality, and real-world applicability. Taking first place was a defining moment in my development career.",
     year: "2025",
     type: "award",
-    images: "certificate.jpeg", 
+    images: ["certificate.jpeg"], 
   },
   {
     icon: "🎤",

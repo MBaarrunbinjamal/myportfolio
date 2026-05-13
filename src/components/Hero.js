@@ -203,7 +203,7 @@ const Hero = ({ children }) => {
             </motion.div>
 
             <motion.div className="btn-row" variants={fadeUp}>
-              {["Hire me", "Download CV"].map((label, i) => (
+              {[ "Download CV"].map((label, i) => (
                 <motion.button
                   key={label}
                   className="butn"
