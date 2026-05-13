@@ -62,10 +62,10 @@ function Footer() {
     <footer className="footer">
       <div className="footer-wrap">
 
-        {/* Top row */}
+       
         <div className="footer-top">
 
-          {/* Brand */}
+       
           <motion.div
             className="footer-brand"
             initial={{ opacity: 0, y: 28 }}
@@ -84,7 +84,7 @@ function Footer() {
               Building clean, fast, and scalable web experiences — from frontend to backend.
             </p>
 
-            {/* Social icons */}
+      
             <motion.div
               className="footer-socials"
               initial="hidden"
@@ -116,7 +116,7 @@ function Footer() {
             </motion.div>
           </motion.div>
 
-          {/* Nav links */}
+         
           <motion.div
             className="footer-links"
             initial={{ opacity: 0, y: 28 }}
@@ -146,7 +146,7 @@ function Footer() {
             </ul>
           </motion.div>
 
-          {/* Contact */}
+      
           <motion.div
             className="footer-contact"
             initial={{ opacity: 0, y: 28 }}
@@ -194,7 +194,7 @@ function Footer() {
           </motion.div>
         </div>
 
-        {/* Bottom */}
+      
         <motion.div
           className="footer-bottom"
           initial={{ opacity: 0 }}

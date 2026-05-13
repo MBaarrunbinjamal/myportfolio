@@ -146,7 +146,7 @@
   flex: 1;
 }
 
-/* ─── Section breakpoints ─────────────────────────── */
+
 
 @media (max-width: 1024px) {
   .ach-wrap { padding: 40px 36px; }
@@ -165,11 +165,7 @@
 }
 
 
-/* ═══════════════════════════════════════════════════
-   SIDEBAR
-═══════════════════════════════════════════════════ */
 
-/* FIX: was 999 — must be above header (z-index 2000) */
 .sidebar-backdrop {
   position: fixed;
   inset: 0;
@@ -405,7 +401,7 @@
   z-index: 5;
 }
 
-/* ─── Sidebar mobile ──────────────────────────────── */
+
 
 @media (max-width: 520px) {
   .sidebar-panel {
@@ -423,7 +419,7 @@
 
   .sidebar-gallery { grid-template-columns: 1fr 1fr; }
 
-  /* FIX: bigger, easier-to-tap close button on small screens */
+
   .sidebar-close {
     top: 14px;
     right: 14px;

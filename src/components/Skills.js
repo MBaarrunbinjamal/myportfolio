@@ -85,7 +85,7 @@ function Skills() {
     <section id="skills" className="skills-section">
       <div className="skills">
 
-        {/* Header */}
+  
         <motion.div
           className="skills-header"
           initial={{ opacity: 0, y: 32 }}
@@ -116,7 +116,7 @@ function Skills() {
           </p>
         </motion.div>
 
-        {/* Grid */}
+    
         <div className="skills-grid">
           {skillsData.map((group, gi) => (
             <motion.div
@@ -128,7 +128,7 @@ function Skills() {
               transition={{ duration: 0.6, delay: gi * 0.1, ease: EASE }}
               whileHover={{ y: -6, transition: { duration: 0.25 } }}
             >
-              {/* Card header */}
+            
               <motion.div
                 className="skill-card-header"
                 initial={{ opacity: 0 }}
@@ -146,7 +146,7 @@ function Skills() {
                 <span className="skill-category">{group.category}</span>
               </motion.div>
 
-              {/* Bars */}
+            
               <div className="skill-list">
                 {group.skills.map((skill, si) => (
                   <SkillBar

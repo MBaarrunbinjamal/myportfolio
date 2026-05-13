@@ -10,7 +10,7 @@
   --header-margin: 20px 40px;
 }
 
-/* ─── Container ───────────────────────────────────── */
+
 .header-container {
   position: fixed;
   top: 0;
@@ -19,14 +19,14 @@
   z-index: 2000;
   padding: 18px 36px 0;
   transition: padding 0.4s ease;
-  /* scroll with page — fixed keeps it on screen while scrolling */
+
 }
 
 .header-container.scrolled {
   padding: 10px 36px 0;
 }
 
-/* ─── Glowing border pill ─────────────────────────── */
+
 .header-border-box {
   position: relative;
   height: var(--header-height);
@@ -46,7 +46,7 @@
     0 0 30px rgba(0, 247, 255, 0.06);
 }
 
-/* Rotating conic gradient border */
+
 .header-border-box::before {
   content: "";
   position: absolute;
@@ -65,7 +65,7 @@
   animation: lightSweep 3.5s linear infinite;
 }
 
-/* Second sweep layer for depth */
+
 .header-border-box::after {
   content: "";
   position: absolute;
@@ -83,7 +83,7 @@
   opacity: 0.5;
 }
 
-/* ─── Inner content ───────────────────────────────── */
+
 .header-content {
   position: relative;
   z-index: 2;
@@ -99,7 +99,7 @@
   gap: 16px;
 }
 
-/* ─── Logo ────────────────────────────────────────── */
+
 .logo {
   display: flex;
   align-items: center;
@@ -125,7 +125,6 @@
   padding: 0 4px;
 }
 
-/* ─── Desktop Nav ─────────────────────────────────── */
 .nav-desktop {
   display: flex;
   align-items: center;
@@ -183,7 +182,7 @@
   transform: scale(1);
 }
 
-/* ─── Right section ───────────────────────────────── */
+
 .header-right {
   display: flex;
   align-items: center;
@@ -191,7 +190,7 @@
   flex-shrink: 0;
 }
 
-/* ─── Contact button (desktop) ────────────────────── */
+
 .btn-contact {
   background: linear-gradient(135deg, #042a31, #064d5a);
   color: white;
@@ -213,7 +212,6 @@
   transform: translateY(-1px);
 }
 
-/* ─── Hamburger ───────────────────────────────────── */
 .menu-trigger {
   display: none;
   background: rgba(9, 94, 97, 0.15);
@@ -263,7 +261,6 @@
   transform: translateX(-50%) rotate(-45deg);
 }
 
-/* ─── Mobile Nav Drawer ───────────────────────────── */
 .nav-mobile {
   position: fixed;
   top: calc(var(--header-height) + 28px + 18px);
@@ -366,7 +363,7 @@
   border-color: rgba(0, 247, 255, 0.4);
 }
 
-/* ─── Backdrop ────────────────────────────────────── */
+
 .menu-backdrop {
   position: fixed;
   inset: 0;
@@ -377,7 +374,7 @@
   animation: fadeIn 0.25s ease;
 }
 
-/* ─── Animations ──────────────────────────────────── */
+
 @keyframes lightSweep {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -388,16 +385,14 @@
   to   { opacity: 1; }
 }
 
-/* ─── Responsive ──────────────────────────────────── */
 
-/* Tablet: hide contact button, show hamburger */
 @media (max-width: 900px) {
   .btn-contact {
     display: none;
   }
 }
 
-/* Mobile: hide desktop nav, show hamburger */
+
 @media (max-width: 768px) {
   .header-container {
     padding: 14px 16px 0;
@@ -421,14 +416,13 @@
     padding: 0 20px;
   }
 
-  /* Adjust drawer top position on scrolled state */
   .header-container.scrolled ~ .nav-mobile,
   .nav-mobile {
     top: calc(var(--header-height) + 10px + 14px);
   }
 }
 
-/* Small phones */
+
 @media (max-width: 400px) {
   .header-content {
     padding: 0 14px;

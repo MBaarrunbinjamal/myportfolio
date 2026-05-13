@@ -123,7 +123,7 @@ function Contact() {
     <section id="contact" className="contact-section" ref={sectionRef}>
       <div className="contact-wrap">
 
-        {/* Header */}
+      
         <motion.div
           className="contact-header"
           variants={fadeUp}

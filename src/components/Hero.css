@@ -214,7 +214,7 @@
   z-index: 3;
 }
 
-/* FIX: was hardcoded 600x600px — now sized relative to the circle */
+
 .hero-right img {
   position: absolute;
   z-index: 4;
@@ -225,7 +225,6 @@
   margin-bottom: 30px;
 }
 
-/* ─── Responsive ──────────────────────────────────── */
 
 @media (max-width: 992px) {
   .hero-grid { gap: 24px; }
@@ -260,7 +259,6 @@
     height: clamp(140px, 50vw, 220px);
   }
 
-  /* FIX: img was 90% of a flex container with no width — now tied to bigcircle via 160% */
   .hero-right img {
     width: 160%;
     height: 160%;
