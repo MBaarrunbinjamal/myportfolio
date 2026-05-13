@@ -13,7 +13,7 @@ const achievements = [
       "Placed first in a competitive AI-focused web development and content generation competition. The challenge required building a production-ready AI-integrated web application under time constraints, judged on innovation, UI quality, and real-world applicability. Taking first place was a defining moment in my development career.",
     year: "2025",
     type: "award",
-    images: [], 
+    images: "certificate.jpeg", 
   },
   {
     icon: "🎤",
@@ -22,7 +22,7 @@ const achievements = [
       "Represented my institute at Aptech Vision 2025 — a national showcase of student innovation — by presenting Propello, an AI-powered career counselling platform. The event brought together top students across all Aptech centres in Pakistan. Presenting to industry professionals and peers was an invaluable experience in pitching, public speaking, and product demonstration.",
     year: "2025",
     type: "event",
-    images: [],
+    images: ["vision.jpeg"],
   },
   {
     icon: "🌍",
@@ -40,7 +40,7 @@ const achievements = [
       "Completed a rigorous four-semester professional diploma in software development at Aptech. The curriculum covered full-stack web development, database management, software engineering principles, object-oriented programming, and project management. This foundational training underpins every project I build.",
     year: "2024",
     type: "education",
-    images: [],
+    images: ["diploma1.jpeg","diploma2.jpeg"],
   }
 ];
 

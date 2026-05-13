@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./Hero.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faInstagram, faLinkedin, faGithub, faTwitter,
+  faInstagram, faLinkedin, faGithub, faDiscord,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faBriefcase, faCode, faCalendarAlt,
@@ -59,9 +59,9 @@ const fadeRight = {
 
 const socialIcons = [
   { icon: faInstagram, href: "https://instagram.com/mbaarrun.dev", label: "Instagram" },
-  { icon: faLinkedin, href: "https://linkedin.com/in/mbaarrun", label: "LinkedIn" },
+  { icon: faLinkedin, href: "https://linkedin.com/in/MBaarrun", label: "LinkedIn" },
   { icon: faGithub, href: "https://github.com/MBaarrunbinjamal/MBaarrunbinjamal.git", label: "GitHub" },
-  { icon: faTwitter, href: "#", label: "Twitter" },
+  { icon: faDiscord, href: "https://discord.com/users/muhammadbaarrun", label: "Discord" },
 ];
 
 const stats = [

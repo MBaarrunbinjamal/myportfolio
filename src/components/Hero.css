@@ -214,30 +214,31 @@
   z-index: 3;
 }
 
+/* FIX: was hardcoded 600x600px — now sized relative to the circle */
 .hero-right img {
   position: absolute;
   z-index: 4;
-width: 600px;
-  height: 600px;
+  width: 160%;
+  height: 160%;
   object-fit: contain;
   pointer-events: none;
-   margin-bottom: 30px;
+  margin-bottom: 30px;
 }
+
+/* ─── Responsive ──────────────────────────────────── */
 
 @media (max-width: 992px) {
   .hero-grid { gap: 24px; }
+
   .bigcircle {
     width: clamp(160px, 32vw, 320px);
     height: clamp(160px, 32vw, 320px);
   }
+
   .hero-right img {
-  position: absolute;
-  z-index: 4;
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
-  pointer-events: none;
-}
+    width: 160%;
+    height: 160%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -245,38 +246,62 @@ width: 600px;
     padding: 90px 6% 50px;
     align-items: flex-start;
   }
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-right { order: -1; }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-right {
+    order: -1;
+  }
+
   .bigcircle {
     width: clamp(140px, 50vw, 220px);
     height: clamp(140px, 50vw, 220px);
   }
+
+  /* FIX: img was 90% of a flex container with no width — now tied to bigcircle via 160% */
+  .hero-right img {
+    width: 160%;
+    height: 160%;
+  }
+
   .hero-title { font-size: clamp(1.4rem, 7vw, 2.4rem); }
   .hero-hr { width: 70%; }
   .stats-row { justify-content: center; }
   .ma { flex: 1 1 90px; max-width: 150px; }
-  .hero-right img {
-  position: absolute;
-  z-index: 4;
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
-  pointer-events: none;
-}
 }
 
-@media (max-width: 400px) {
-  .hero-container { padding: 80px 5% 40px; }
-  .hero-title { font-size: 1.3rem; }
+@media (max-width: 480px) {
+  .hero-container {
+    padding: 80px 5% 40px;
+  }
+
+  .bigcircle {
+    width: clamp(120px, 44vw, 180px);
+    height: clamp(120px, 44vw, 180px);
+  }
+
+  .hero-right img {
+    width: 160%;
+    height: 160%;
+  }
+
+  .hero-title { font-size: clamp(1.2rem, 6vw, 1.8rem); }
+  .hero-greeting { font-size: 1rem; }
   .butn { font-size: 13px; height: 38px; padding: 0 14px; }
   .stats-row { gap: 10px; }
   .ma { flex: 1 1 80px; max-width: 130px; padding: 12px 6px; }
-  .hero-right img {
-  position: absolute;
-  z-index: 4;
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
-  pointer-events: none;
 }
+
+@media (max-width: 360px) {
+  .hero-container { padding: 75px 4% 36px; }
+  .bigcircle {
+    width: 110px;
+    height: 110px;
+  }
+  .ma { flex: 1 1 70px; max-width: 110px; }
+  .social-row { gap: 8px; }
+  .circle { height: 34px; width: 34px; }
+  .social-icon { font-size: 15px; }
 }

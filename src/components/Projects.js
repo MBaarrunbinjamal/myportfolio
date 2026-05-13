@@ -16,7 +16,7 @@ const projects = [
     status: "live",
     live: "https://samadtariq.github.io/Blooming-Petals/",
     github: null,
-    images: [], // drop your image paths here, e.g. ["/images/bp1.jpg", "/images/bp2.jpg"]
+    images: ["Bloomingpetals.png","Bloom2.png","Bloom3.png","Bloom4.png"], // drop your image paths here, e.g. ["/images/bp1.jpg", "/images/bp2.jpg"]
   },
   {
     name: "Elegant Salon",
@@ -28,7 +28,7 @@ const projects = [
     status: "live",
     live: null,
     github: "https://github.com/MBaarrunbinjamal/Elegant-saloon.git",
-    images: [],
+    images: ["Elegantsaloon.png","Elegant2.png","Elegant3.png","Elegant4.png"], // drop your image paths here, e.g. ["/images/es1.jpg", "/images/es2.jpg"]
   },
   {
     name: "Propello",
@@ -40,7 +40,7 @@ const projects = [
     status: "live",
     live: null,
     github: "https://github.com/MBaarrunbinjamal/Vision.git",
-    images: [],
+    images: ["Propello.png","Propello2.png","Propello3.png","Propello4.png"], // drop your image paths here, e.g. ["/images/pp1.jpg", "/images/pp2.jpg"]
   },
   {
     name: "Ecosystem",
