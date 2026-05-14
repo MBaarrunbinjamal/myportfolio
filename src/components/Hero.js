@@ -73,7 +73,6 @@ const stats = [
 function Counter({ target }) {
   const count = useMotionValue(0);
   const rounded = useTransform(count, v => Math.round(v));
-  const spring = useSpring(count, { stiffness: 60, damping: 18 });
   const ref = useRef(null);
   const started = useRef(false);
 
