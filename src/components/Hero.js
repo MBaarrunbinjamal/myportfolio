@@ -272,7 +272,7 @@ const Hero = ({ children }) => {
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
-            <img src="hero-image.png" alt="Hero" />
+            <img src="/hero-image.png" alt="Hero" />
           </motion.div>
         </div>
       </div>
