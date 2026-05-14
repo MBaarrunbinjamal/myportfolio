@@ -202,28 +202,29 @@ const Hero = ({ children }) => {
               ))}
             </motion.div>
 
-            <motion.div className="btn-row" variants={fadeUp}>
-              {[ "Download CV"].map((label, i) => (
-                <motion.button
-                  key={label}
-                  className="butn"
-                  whileHover={{ scale: 1.06, y: -3 }}
-                  whileTap={{ scale: 0.94 }}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.9 + i * 0.12, duration: 0.55, ease: EASE }}
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <motion.span
-                    style={{ position: "absolute", inset: 0, background: "rgba(0,247,255,0.12)", originX: 0 }}
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <b style={{ position: "relative" }}>{label}</b>
-                </motion.button>
-              ))}
-            </motion.div>
+           <motion.div className="btn-row" variants={fadeUp}>
+  {[{ label: "Download CV", href: "Baarrun.pdf" }].map(({ label, href }, i) => (
+    <a key={label} href={href} download target="_blank" rel="noopener noreferrer">
+      <motion.button
+        className="butn"
+        whileHover={{ scale: 1.06, y: -3 }}
+        whileTap={{ scale: 0.94 }}
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.9 + i * 0.12, duration: 0.55, ease: EASE }}
+        style={{ position: "relative", overflow: "hidden" }}
+      >
+        <motion.span
+          style={{ position: "absolute", inset: 0, background: "rgba(0,247,255,0.12)", originX: 0 }}
+          initial={{ scaleX: 0 }}
+          whileHover={{ scaleX: 1 }}
+          transition={{ duration: 0.3 }}
+        />
+        <b style={{ position: "relative" }}>{label}</b>
+      </motion.button>
+    </a>
+  ))}
+</motion.div>
 
             <motion.div
               className="stats-row"

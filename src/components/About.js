@@ -112,25 +112,24 @@ function About() {
             </motion.div>
 
          
-            <motion.div className="about-buttons" {...fadeUp(0.4)}>
-              {[ "Download CV"].map((label, i) => (
-                <motion.button
-                  key={label}
-                  className={i === 0 ? "btn-read-more" : "btn-download"}
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <motion.span
-                    style={{ position: "absolute", inset: 0, background: "rgba(0,247,255,0.07)", originX: 0 }}
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <span style={{ position: "relative" }}>{label}</span>
-                </motion.button>
-              ))}
-            </motion.div>
+           <motion.div className="about-buttons" {...fadeUp(0.4)}>
+  <a href="/Baarrun.pdf" download="Baarrun.pdf" target="_blank" rel="noopener noreferrer">
+    <motion.button
+      className="btn-download"
+      whileHover={{ scale: 1.05, y: -3 }}
+      whileTap={{ scale: 0.95 }}
+      style={{ position: "relative", overflow: "hidden" }}
+    >
+      <motion.span
+        style={{ position: "absolute", inset: 0, background: "rgba(0,247,255,0.07)", originX: 0 }}
+        initial={{ scaleX: 0 }}
+        whileHover={{ scaleX: 1 }}
+        transition={{ duration: 0.3 }}
+      />
+      <span style={{ position: "relative" }}>Download CV</span>
+    </motion.button>
+  </a>
+</motion.div>
           </div>
 
        
