@@ -22,7 +22,7 @@ const achievements = [
       "Represented my institute at Aptech Vision 2025 — a national showcase of student innovation — by presenting Propello, an AI-powered career counselling platform. The event brought together top students across all Aptech centres in Pakistan. Presenting to industry professionals and peers was an invaluable experience in pitching, public speaking, and product demonstration.",
     year: "2025",
     type: "event",
-    images: ["vision.jpeg"],
+    images: ["Vision.jpeg"],
   },
   {
     icon: "🌍",
