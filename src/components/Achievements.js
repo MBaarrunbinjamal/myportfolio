@@ -172,7 +172,7 @@ function AchievementSidebar({ item, onClose }) {
                     transition={{ delay: 0.25 + idx * 0.1, duration: 0.45, ease: EASE }}
                     whileHover={{ scale: 1.03 }}
                   >
-                    <img src={src} alt={`${item.title} photo ${idx + 1}`} className="sidebar-img" />
+                    <img src={src} alt={`${item.title} — ${idx + 1}`} className="sidebar-img" />
                   </motion.div>
                 ))}
               </div>
