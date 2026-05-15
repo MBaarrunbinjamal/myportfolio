@@ -1,13 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
 
+/* ─── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ─── Section ───────────────────────────────────────────────── */
 .hero-section {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  overflow: hidden;
   background: #020814;
 }
 
+/* ─── Particles ─────────────────────────────────────────────── */
 #particles-js {
   position: absolute;
   top: 0;
@@ -15,6 +21,7 @@
   width: 100%;
   height: 100%;
   z-index: 0;
+  pointer-events: none;
 }
 
 #particles-js canvas {
@@ -23,6 +30,7 @@
   height: 100% !important;
 }
 
+/* ─── Overlay ───────────────────────────────────────────────── */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -35,6 +43,7 @@
   );
 }
 
+/* ─── Container ─────────────────────────────────────────────── */
 .hero-container {
   position: relative;
   z-index: 2;
@@ -43,9 +52,9 @@
   display: flex;
   align-items: center;
   padding: 100px 5% 60px;
-  box-sizing: border-box;
 }
 
+/* ─── Grid ──────────────────────────────────────────────────── */
 .hero-grid {
   width: 100%;
   display: grid;
@@ -54,6 +63,7 @@
   gap: 40px;
 }
 
+/* ─── Left Column ───────────────────────────────────────────── */
 .hero-left {
   display: flex;
   flex-direction: column;
@@ -88,6 +98,7 @@
   line-height: 1.2;
 }
 
+/* ─── Social Row ────────────────────────────────────────────── */
 .social-row {
   display: flex;
   gap: 12px;
@@ -119,6 +130,7 @@
   font-size: 18px;
 }
 
+/* ─── Button Row ────────────────────────────────────────────── */
 .btn-row {
   display: flex;
   gap: 14px;
@@ -146,6 +158,7 @@
   border-color: #058a94;
 }
 
+/* ─── Stats Row ─────────────────────────────────────────────── */
 .stats-row {
   display: flex;
   gap: 16px;
@@ -170,7 +183,6 @@
   align-items: center;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   cursor: pointer;
-  box-sizing: border-box;
 }
 
 .ma:hover {
@@ -198,14 +210,25 @@
   color: white;
 }
 
+/* ─── Right Column ──────────────────────────────────────────── */
+/*
+  The entire right cell is a sized canvas.
+  The image is position:absolute inside it, anchored to the bottom.
+  overflow:hidden on mobile means it can NEVER bleed into other content.
+*/
 .hero-right {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
   position: relative;
-  z-index: 10;
+  z-index: 2;
+  /* Tall enough on desktop so the figure (160% of circle) fits + some padding */
+  min-height: clamp(340px, 48vw, 560px);
+  padding-bottom: clamp(20px, 3vw, 48px);
 }
 
+/* Circle sits at the bottom of the container */
 .bigcircle {
   width: clamp(150px, 33vw, 365px);
   height: clamp(150px, 33vw, 365px);
@@ -213,94 +236,141 @@
   border-radius: 50%;
   position: relative;
   z-index: 3;
+  flex-shrink: 0;
 }
 
-
+/*
+  Image: absolute, bottom-anchored, centered.
+  Grows upward — never downward — so it can't push content below it.
+*/
 .hero-right img {
   position: absolute;
   z-index: 4;
-  width: 160%;
-  height: 160%;
+  bottom: 0;           /* anchor to bottom of .hero-right */
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 95%;         /* fills most of the container height */
+  max-height: clamp(300px, 44vw, 530px);
   object-fit: contain;
   pointer-events: none;
-  margin-bottom: 30px;
 }
 
-
+/* ─── 992px ─────────────────────────────────────────────────── */
 @media (max-width: 992px) {
   .hero-grid { gap: 24px; }
 
+  .hero-right {
+    min-height: clamp(300px, 44vw, 480px);
+    padding-bottom: clamp(16px, 2.5vw, 36px);
+  }
+
   .bigcircle {
-    width: clamp(160px, 32vw, 320px);
-    height: clamp(160px, 32vw, 320px);
+    width: clamp(140px, 30vw, 300px);
+    height: clamp(140px, 30vw, 300px);
   }
 
   .hero-right img {
-    width: 160%;
-    height: 160%;
+    height: 93%;
+    max-height: clamp(280px, 42vw, 460px);
   }
 }
 
+/* ─── 768px — single column, image block on top ─────────────── */
 @media (max-width: 768px) {
   .hero-container {
-    padding: 90px 6% 50px;
+    padding: 80px 6% 50px;
     align-items: flex-start;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .hero-right {
     order: -1;
+    width: 100%;
+    /* Fixed height — hard canvas, nothing escapes */
+    height: clamp(240px, 62vw, 340px);
+    min-height: unset;
+    padding-bottom: clamp(10px, 2.5vw, 20px);
+    overflow: hidden;         /* ← this is what stops the overlap */
+    margin-bottom: 28px;
   }
 
   .bigcircle {
-    width: clamp(140px, 50vw, 220px);
-    height: clamp(140px, 50vw, 220px);
+    width: clamp(110px, 32vw, 190px);
+    height: clamp(110px, 32vw, 190px);
   }
 
   .hero-right img {
-    width: 160%;
-    height: 160%;
+    height: 100%;
+    max-height: 100%;
   }
 
-  .hero-title { font-size: clamp(1.4rem, 7vw, 2.4rem); }
-  .hero-hr { width: 70%; }
-  .stats-row { justify-content: center; }
-  .ma { flex: 1 1 90px; max-width: 150px; }
+  .hero-title  { font-size: clamp(1.4rem, 7vw, 2.4rem); }
+  .hero-hr     { width: 70%; }
+  .stats-row   { justify-content: center; }
+  .ma          { flex: 1 1 90px; max-width: 150px; }
 }
 
+/* ─── 480px ─────────────────────────────────────────────────── */
 @media (max-width: 480px) {
-  .hero-container {
-    padding: 80px 5% 40px;
+  .hero-container { padding: 70px 5% 40px; }
+
+  .hero-right {
+    height: clamp(200px, 56vw, 270px);
+    margin-bottom: 22px;
+    padding-bottom: clamp(8px, 2vw, 16px);
   }
 
   .bigcircle {
-    width: clamp(120px, 44vw, 180px);
-    height: clamp(120px, 44vw, 180px);
+    width: clamp(95px, 28vw, 155px);
+    height: clamp(95px, 28vw, 155px);
   }
 
-  .hero-right img {
-    width: 160%;
-    height: 160%;
+  .hero-title    { font-size: clamp(1.2rem, 6vw, 1.8rem); }
+  .hero-greeting { font-size: 0.95rem; }
+
+  .butn {
+    font-size: 13px;
+    height: 38px;
+    padding: 0 14px;
   }
 
-  .hero-title { font-size: clamp(1.2rem, 6vw, 1.8rem); }
-  .hero-greeting { font-size: 1rem; }
-  .butn { font-size: 13px; height: 38px; padding: 0 14px; }
   .stats-row { gap: 10px; }
-  .ma { flex: 1 1 80px; max-width: 130px; padding: 12px 6px; }
+
+  .ma {
+    flex: 1 1 80px;
+    max-width: 130px;
+    padding: 12px 6px;
+  }
+
+  .ma h2  { font-size: clamp(18px, 5vw, 26px); }
+  .ma p   { font-size: 11px; }
+
+  .circle      { height: 34px; width: 34px; }
+  .social-icon { font-size: 16px; }
 }
 
+/* ─── 360px ─────────────────────────────────────────────────── */
 @media (max-width: 360px) {
-  .hero-container { padding: 75px 4% 36px; }
-  .bigcircle {
-    width: 110px;
-    height: 110px;
+  .hero-container { padding: 65px 4% 36px; }
+
+  .hero-right {
+    height: clamp(175px, 52vw, 230px);
+    margin-bottom: 18px;
+    padding-bottom: 8px;
   }
-  .ma { flex: 1 1 70px; max-width: 110px; }
+
+  .bigcircle { width: 95px; height: 95px; }
+
+  .hero-title { font-size: clamp(1.1rem, 5.5vw, 1.5rem); }
+
+  .ma         { flex: 1 1 70px; max-width: 110px; }
   .social-row { gap: 8px; }
-  .circle { height: 34px; width: 34px; }
-  .social-icon { font-size: 15px; }
+  .circle     { height: 32px; width: 32px; }
+  .social-icon { font-size: 14px; }
+  .butn       { font-size: 12px; height: 36px; padding: 0 12px; }
 }
