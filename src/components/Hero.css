@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
 
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
-
 
 .hero-section {
   position: relative;
   min-height: 100vh;
   width: 100%;
   background: #020814;
+  overflow: hidden;
 }
-
 
 #particles-js {
   position: absolute;
@@ -30,7 +28,6 @@
   height: 100% !important;
 }
 
-
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -42,7 +39,6 @@
     transparent 65%
   );
 }
-
 
 .hero-container {
   position: relative;
@@ -61,7 +57,6 @@
   align-items: center;
   gap: 40px;
 }
-
 
 .hero-left {
   display: flex;
@@ -97,7 +92,6 @@
   line-height: 1.2;
 }
 
-/* ─── Social Row ────────────────────────────────────────────── */
 .social-row {
   display: flex;
   gap: 12px;
@@ -115,19 +109,18 @@
   justify-content: center;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
- border: #00ffff 1px solid;
+  border: #00ffff 1px solid;
   flex-shrink: 0;
 }
 
 .circle:hover {
-background-color: transparent;
+  background-color: transparent;
 }
 
 .social-icon {
   color: rgb(234, 234, 234);
   font-size: 18px;
 }
-
 
 .btn-row {
   display: flex;
@@ -156,7 +149,6 @@ background-color: transparent;
   border-color: #058a94;
 }
 
-/* ─── Stats Row ─────────────────────────────────────────────── */
 .stats-row {
   display: flex;
   gap: 16px;
@@ -164,7 +156,7 @@ background-color: transparent;
 }
 
 .ma {
-background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
+  background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-radius: 16px;
@@ -208,7 +200,6 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   color: white;
 }
 
-/* ─── Right Column ──────────────────────────────────────────── */
 .hero-right {
   display: flex;
   flex-direction: column;
@@ -220,7 +211,6 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   padding-bottom: clamp(20px, 3vw, 48px);
 }
 
-/* ── Main circle ── */
 .bigcircle {
   width: clamp(150px, 33vw, 365px);
   height: clamp(150px, 33vw, 365px);
@@ -228,12 +218,10 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   position: relative;
   z-index: 3;
   flex-shrink: 0;
-
   background:
     radial-gradient(circle at 38% 35%, rgba(0, 247, 255, 0.18) 0%, transparent 55%),
     radial-gradient(circle at 65% 70%, rgba(5, 138, 148, 0.25) 0%, transparent 50%),
     radial-gradient(circle, #0a5c62 0%, #042f34 55%, #021a1d 100%);
-
   box-shadow:
     0 0 0 1px rgba(0, 247, 255, 0.18),
     0 0 32px rgba(0, 220, 230, 0.22),
@@ -241,7 +229,6 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
     inset 0 0 40px rgba(0, 247, 255, 0.06);
 }
 
-/* Spinning dashed outer ring */
 .bigcircle::before {
   content: "";
   position: absolute;
@@ -252,7 +239,6 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   pointer-events: none;
 }
 
-/* Counter-spinning arc */
 .bigcircle::after {
   content: "";
   position: absolute;
@@ -265,36 +251,25 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   pointer-events: none;
 }
 
-/* ── Orbit wrapper — sized to match bigcircle at every breakpoint ── */
-/*
-  This div is position:absolute, centered on the bigcircle.
-  The dots are absolute children of it, so transform-origin
-  is always relative to *this* element — no hardcoded px needed.
-*/
 .orbit-ring {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
   z-index: 2;
-
-  /* Match bigcircle size exactly + padding for the orbit gap */
   --orbit-size: clamp(150px, 33vw, 365px);
   --orbit-gap: 52px;
   width: calc(var(--orbit-size) + var(--orbit-gap) * 2);
   height: calc(var(--orbit-size) + var(--orbit-gap) * 2);
-
   border: 1px solid rgba(0, 247, 255, 0.08);
-
-  /* Center over bigcircle */
   bottom: clamp(20px, 3vw, 48px);
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* ── Dot spins by rotating the RING itself — dot stays at top ── */
 .orbit-ring--spin1 {
   animation: spin-cw 6s linear infinite;
 }
+
 .orbit-ring--spin2 {
   --orbit-gap: 72px;
   width: calc(var(--orbit-size) + var(--orbit-gap) * 2);
@@ -326,7 +301,6 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   box-shadow: 0 0 8px rgba(0, 247, 255, 0.8);
 }
 
-/* ── Glow pulse ── */
 .glow-pulse {
   position: absolute;
   border-radius: 50%;
@@ -342,7 +316,6 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   animation: pulse-glow 4s ease-in-out infinite;
 }
 
-/* ── Hero image ── */
 .hero-right img {
   position: absolute;
   z-index: 4;
@@ -357,7 +330,6 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   filter: drop-shadow(0 8px 32px rgba(0, 200, 220, 0.25)) drop-shadow(0 0 8px rgba(0, 247, 255, 0.1));
 }
 
-/* ── Tech corner brackets ── */
 .tech-bracket {
   position: absolute;
   width: 24px;
@@ -366,12 +338,12 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   z-index: 6;
   opacity: 0.5;
 }
+
 .tech-bracket--tl { top: 12%; left: 18%; border-top: 2px solid #00f7ff; border-left: 2px solid #00f7ff; }
 .tech-bracket--tr { top: 12%; right: 18%; border-top: 2px solid #00f7ff; border-right: 2px solid #00f7ff; }
 .tech-bracket--bl { bottom: 8%; left: 18%; border-bottom: 2px solid #00f7ff; border-left: 2px solid #00f7ff; }
 .tech-bracket--br { bottom: 8%; right: 18%; border-bottom: 2px solid #00f7ff; border-right: 2px solid #00f7ff; }
 
-/* ── Keyframes ── */
 @keyframes spin-cw  { to { transform: translateX(-50%) rotate(360deg); } }
 @keyframes spin-ccw { to { transform: translateX(-50%) rotate(-360deg); } }
 @keyframes pulse-glow {
@@ -379,7 +351,6 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   50%       { opacity: 1;   transform: translateX(-50%) scale(1.07); }
 }
 
-/* ─── 992px ─────────────────────────────────────────────────── */
 @media (max-width: 992px) {
   .hero-right {
     min-height: clamp(300px, 44vw, 480px);
@@ -403,7 +374,6 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   }
 }
 
-/* ─── 768px ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .hero-right {
     order: -1;
@@ -437,7 +407,6 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   .tech-bracket { width: 18px; height: 18px; }
 }
 
-/* ─── 480px ─────────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .hero-right {
     height: clamp(200px, 56vw, 270px);
@@ -465,7 +434,6 @@ background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   .orbit-dot--2 { width: 4px; height: 4px; top: -2px; }
 }
 
-/* ─── 360px ─────────────────────────────────────────────────── */
 @media (max-width: 360px) {
   .hero-right {
     height: clamp(175px, 52vw, 230px);

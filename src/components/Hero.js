@@ -252,40 +252,33 @@ const Hero = ({ children }) => {
             </motion.div>
           </motion.div>
 
-       {/* ── Hero Right ─────────────────────────────────────────── */}
           <motion.div
             className="hero-right"
             variants={fadeRight}
             initial="hidden"
             animate="show"
           >
-            {/* Breathing glow behind circle */}
             <div className="glow-pulse" />
 
-            {/* Orbit ring 1 — spins clockwise, carries dot */}
             <div className="orbit-ring orbit-ring--spin1">
               <div className="orbit-dot orbit-dot--1" />
             </div>
 
-            {/* Orbit ring 2 — spins counter-clockwise, carries dot */}
             <div className="orbit-ring orbit-ring--spin2">
               <div className="orbit-dot orbit-dot--2" />
             </div>
 
-            {/* Tech corner brackets */}
             <div className="tech-bracket tech-bracket--tl" />
             <div className="tech-bracket tech-bracket--tr" />
             <div className="tech-bracket tech-bracket--bl" />
             <div className="tech-bracket tech-bracket--br" />
 
-            {/* Main circle */}
             <motion.div
               className="bigcircle"
               animate={{ rotate: 360 }}
               transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
             />
 
-            {/* Shimmer overlay on circle */}
             <motion.div
               style={{
                 position: "absolute",
@@ -303,7 +296,6 @@ const Hero = ({ children }) => {
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            {/* Hero image */}
             <img src="hero-image.PNG" alt="Hero" />
           </motion.div>
         </div>
