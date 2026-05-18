@@ -9,9 +9,10 @@
 .projects-wrap {
   width: 100%;
   max-width: 1200px;
-  background: linear-gradient(135deg, rgba(5, 138, 148, 0.18), rgba(5, 138, 148, 0.04));
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+
+   background: rgba(255,255,255, 0.00);
+  backdrop-filter: blur(0px) saturate(100%);
+  -webkit-backdrop-filter: blur(19px) saturate(100%);
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55), inset 0 0 16px rgba(5, 138, 148, 0.12);
@@ -90,12 +91,12 @@
 }
 
 .filter-btn:hover {
-  border-color: rgba(22, 156, 177, 0.5);
-  color: #169cb1;
+  border-color: rgba(43, 156, 173, 0.5);
+  color: #000303;
 }
 
 .filter-btn--active {
-  background: linear-gradient(135deg, #169cb1, #095e61);
+background: linear-gradient(135deg, rgb(34, 155, 163), rgba(2, 58, 61, 0.932));
   border-color: transparent;
   color: #ffffff;
   box-shadow: 0 4px 14px rgba(22, 156, 177, 0.35);
@@ -108,7 +109,7 @@
 }
 
 .project-card {
-  background: linear-gradient(135deg, rgba(5, 138, 148, 0.2), rgba(5, 138, 148, 0.04));
+background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 18px;
   padding: 26px 22px;

@@ -16,7 +16,7 @@ const projects = [
     status: "live",
     live: "https://samadtariq.github.io/Blooming-Petals/",
     github: null,
-    images: ["Bloomingpetals.png","Bloom2.png","Bloom3.png","Bloom4.png"], // drop your image paths here, e.g. ["/images/bp1.jpg", "/images/bp2.jpg"]
+    images: ["Bloomingpetals.png", "Bloom2.png", "Bloom3.png", "Bloom4.png"],
   },
   {
     name: "Elegant Salon",
@@ -28,7 +28,7 @@ const projects = [
     status: "live",
     live: null,
     github: "https://github.com/MBaarrunbinjamal/Elegant-saloon.git",
-    images: ["Elegantsaloon.png","Elegant2.png","Elegant3.png","Elegant4.png"], // drop your image paths here, e.g. ["/images/es1.jpg", "/images/es2.jpg"]
+    images: ["Elegantsaloon.png", "Elegant2.png", "Elegant3.png", "Elegant4.png"],
   },
   {
     name: "Propello",
@@ -40,7 +40,7 @@ const projects = [
     status: "live",
     live: null,
     github: "https://github.com/MBaarrunbinjamal/Vision.git",
-    images: ["Propello.png","Propello2.png","Propello3.png","Propello4.png"], // drop your image paths here, e.g. ["/images/pp1.jpg", "/images/pp2.jpg"]
+    images: ["Propello.png", "Propello2.png", "Propello3.png", "Propello4.png"],
   },
   {
     name: "Ecosystem",
@@ -82,45 +82,49 @@ const projects = [
 
 const filters = ["All", "Frontend", "Backend", "AI", "MERN"];
 
+// Clean fade+slide up — no scale pop, no jitter
 const cardVariants = {
-  hidden: { opacity: 0, scale: 0.88, y: 30 },
+  hidden: { opacity: 0, y: 24 },
   show: (i) => ({
-    opacity: 1, scale: 1, y: 0,
-    transition: { duration: 0.55, delay: i * 0.07, ease: EASE },
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.06, ease: EASE },
   }),
-  exit: { opacity: 0, scale: 0.84, y: -16, transition: { duration: 0.3, ease: EASE } },
+  exit: {
+    opacity: 0,
+    y: 12,
+    transition: { duration: 0.25, ease: [0.4, 0, 1, 1] },
+  },
 };
 
 const ExternalIcon = () => (
   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-    <polyline points="15 3 21 3 21 9"/>
-    <line x1="10" y1="14" x2="21" y2="3"/>
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    <polyline points="15 3 21 3 21 9" />
+    <line x1="10" y1="14" x2="21" y2="3" />
   </svg>
 );
 
 const GithubIcon = () => (
   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
   </svg>
 );
 
 const CloseIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-    <line x1="18" y1="6" x2="6" y2="18"/>
-    <line x1="6" y1="6" x2="18" y2="18"/>
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
 );
 
 /* ── Sidebar ─────────────────────────────────────────────────────────── */
 function ProjectSidebar({ project, onClose }) {
-  // Lock body scroll when open
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
   }, []);
 
-  // Close on Escape
   useEffect(() => {
     const handler = (e) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", handler);
@@ -131,45 +135,41 @@ function ProjectSidebar({ project, onClose }) {
   const showLive = isBloomingPetals && project.live;
   const showGithub = !isBloomingPetals && project.status === "live" && project.github;
 
-  const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.07 } } };
+  const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
   const item = {
-    hidden: { opacity: 0, x: 24 },
-    show: { opacity: 1, x: 0, transition: { duration: 0.45, ease: EASE } },
+    hidden: { opacity: 0, x: 18 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.4, ease: EASE } },
   };
 
   return (
     <>
-      {/* Backdrop */}
       <motion.div
         className="sidebar-backdrop"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.25 }}
         onClick={onClose}
       />
 
-      {/* Panel */}
       <motion.aside
         className="sidebar-panel"
         initial={{ x: "100%" }}
         animate={{ x: 0 }}
         exit={{ x: "100%" }}
-        transition={{ type: "spring", stiffness: 300, damping: 32 }}
+        transition={{ type: "spring", stiffness: 280, damping: 30, mass: 0.9 }}
         role="dialog"
         aria-modal="true"
         aria-label={`${project.name} details`}
       >
-        {/* Top glow line */}
         <div className="sidebar-glow-line" />
 
-        {/* Close button */}
         <motion.button
           className="sidebar-close"
           onClick={onClose}
-          whileHover={{ scale: 1.12, rotate: 90 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ duration: 0.25 }}
+          whileHover={{ scale: 1.1, rotate: 90 }}
+          whileTap={{ scale: 0.92 }}
+          transition={{ duration: 0.2 }}
           aria-label="Close"
         >
           <CloseIcon />
@@ -181,7 +181,6 @@ function ProjectSidebar({ project, onClose }) {
           initial="hidden"
           animate="show"
         >
-          {/* Header */}
           <motion.div variants={item} className="sidebar-head">
             <div className="sidebar-icon">{project.name.charAt(0)}</div>
             <div>
@@ -189,8 +188,8 @@ function ProjectSidebar({ project, onClose }) {
               {project.status === "coming" && (
                 <motion.span
                   className="coming-badge"
-                  animate={{ opacity: [0.7, 1, 0.7] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  animate={{ opacity: [0.6, 1, 0.6] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                 >
                   Coming Soon
                 </motion.span>
@@ -198,29 +197,18 @@ function ProjectSidebar({ project, onClose }) {
             </div>
           </motion.div>
 
-          {/* Divider */}
           <motion.div variants={item} className="sidebar-divider" />
-
-          {/* Detail text */}
           <motion.p variants={item} className="sidebar-detail">{project.detail}</motion.p>
 
-          {/* Stack */}
           <motion.div variants={item}>
             <p className="sidebar-label">Tech Stack</p>
             <div className="sidebar-stack">
               {project.stack.map((s) => (
-                <motion.span
-                  key={s}
-                  className="project-tag"
-                  whileHover={{ scale: 1.08 }}
-                >
-                  {s}
-                </motion.span>
+                <span key={s} className="project-tag">{s}</span>
               ))}
             </div>
           </motion.div>
 
-          {/* Images */}
           {project.images && project.images.length > 0 && (
             <motion.div variants={item}>
               <p className="sidebar-label">Gallery</p>
@@ -229,10 +217,9 @@ function ProjectSidebar({ project, onClose }) {
                   <motion.div
                     key={idx}
                     className="sidebar-img-wrap"
-                    initial={{ opacity: 0, scale: 0.92 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.25 + idx * 0.1, duration: 0.45, ease: EASE }}
-                    whileHover={{ scale: 1.03 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 + idx * 0.08, duration: 0.4, ease: EASE }}
                   >
                     <img src={src} alt={`${project.name} screenshot ${idx + 1}`} className="sidebar-img" />
                   </motion.div>
@@ -241,7 +228,6 @@ function ProjectSidebar({ project, onClose }) {
             </motion.div>
           )}
 
-          {/* Image placeholder when no images yet */}
           {(!project.images || project.images.length === 0) && project.status !== "coming" && (
             <motion.div variants={item}>
               <p className="sidebar-label">Gallery</p>
@@ -252,7 +238,6 @@ function ProjectSidebar({ project, onClose }) {
             </motion.div>
           )}
 
-          {/* Links */}
           {(showLive || showGithub) && (
             <motion.div variants={item} className="sidebar-links">
               {showLive && (
@@ -261,8 +246,9 @@ function ProjectSidebar({ project, onClose }) {
                   className="sidebar-btn sidebar-btn--primary"
                   target="_blank"
                   rel="noreferrer"
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ duration: 0.15 }}
                 >
                   Live Demo <ExternalIcon />
                 </motion.a>
@@ -273,8 +259,9 @@ function ProjectSidebar({ project, onClose }) {
                   className="sidebar-btn sidebar-btn--ghost"
                   target="_blank"
                   rel="noreferrer"
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ duration: 0.15 }}
                 >
                   GitHub <GithubIcon />
                 </motion.a>
@@ -297,7 +284,6 @@ function ProjectCard({ project, index, onClick }) {
 
   return (
     <motion.div
-      layout
       key={project.name}
       custom={index}
       variants={cardVariants}
@@ -308,24 +294,27 @@ function ProjectCard({ project, index, onClick }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
-      whileHover={{ y: -8, scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 260, damping: 22 }}
+      // Simple translateY only — no scale, no spring bounce
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.25, ease: EASE }}
       style={{ position: "relative", overflow: "hidden", cursor: "pointer" }}
     >
+      {/* Subtle top-edge shimmer on hover */}
       <motion.div
         style={{
-          position: "absolute", inset: 0, pointerEvents: "none",
-          background: "linear-gradient(135deg, rgba(0,247,255,0.04) 0%, transparent 60%)",
-          opacity: 0,
+          position: "absolute",
+          top: 0, left: 0, right: 0,
+          height: "1px",
+          background: "linear-gradient(90deg, transparent, rgba(22,156,177,0.6), transparent)",
+          pointerEvents: "none",
         }}
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.3 }}
       />
 
-      {/* Click hint */}
+      {/* Hover hint */}
       <motion.div
         className="card-click-hint"
-        initial={{ opacity: 0 }}
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.2 }}
       >
@@ -333,18 +322,14 @@ function ProjectCard({ project, index, onClick }) {
       </motion.div>
 
       <div className="project-card-top">
-        <motion.div
-          className="project-card-icon"
-          animate={{ rotate: hovered ? [0, -6, 6, 0] : 0 }}
-          transition={{ duration: 0.4 }}
-        >
+        <div className="project-card-icon">
           {project.name.charAt(0)}
-        </motion.div>
+        </div>
         {project.status === "coming" && (
           <motion.span
             className="coming-badge"
-            animate={{ opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            animate={{ opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           >
             Coming Soon
           </motion.span>
@@ -355,26 +340,14 @@ function ProjectCard({ project, index, onClick }) {
       <p className="project-desc">{project.desc}</p>
 
       <div className="project-stack">
-        {project.stack.map((s, i) => (
-          <motion.span
-            key={s}
-            className="project-tag"
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1 + i * 0.05, duration: 0.3, ease: EASE }}
-            whileHover={{ scale: 1.1 }}
-          >
-            {s}
-          </motion.span>
+        {project.stack.map((s) => (
+          <span key={s} className="project-tag">{s}</span>
         ))}
       </div>
 
       {(showLive || showGithub) && (
-        <motion.div
+        <div
           className="project-links"
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.4 }}
           onClick={(e) => e.stopPropagation()}
         >
           {showLive && (
@@ -383,8 +356,9 @@ function ProjectCard({ project, index, onClick }) {
               className="project-link"
               target="_blank"
               rel="noreferrer"
-              whileHover={{ x: 3 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ duration: 0.15 }}
             >
               Live Demo <ExternalIcon />
             </motion.a>
@@ -395,19 +369,20 @@ function ProjectCard({ project, index, onClick }) {
               className="project-link project-link--ghost"
               target="_blank"
               rel="noreferrer"
-              whileHover={{ x: 3 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ duration: 0.15 }}
             >
               GitHub <GithubIcon />
             </motion.a>
           )}
-        </motion.div>
+        </div>
       )}
     </motion.div>
   );
 }
 
-/* ── Section ─────────────────────────────────────────────────────────── */
+/* ── Projects ────────────────────────────────────────────────────────── */
 function Projects() {
   const [active, setActive] = useState("All");
   const [selected, setSelected] = useState(null);
@@ -419,17 +394,17 @@ function Projects() {
 
         <motion.div
           className="projects-header"
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={VP}
-          transition={{ duration: 0.7, ease: EASE }}
+          transition={{ duration: 0.6, ease: EASE }}
         >
           <motion.span
             className="projects-eyebrow"
-            initial={{ opacity: 0, letterSpacing: "0.3em" }}
-            whileInView={{ opacity: 1, letterSpacing: "0.12em" }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={VP}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             What I've Built
           </motion.span>
@@ -439,7 +414,7 @@ function Projects() {
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={VP}
-            transition={{ duration: 0.65, delay: 0.15, ease: EASE }}
+            transition={{ duration: 0.5, delay: 0.15, ease: EASE }}
             style={{ originX: 0.5 }}
           />
           <p className="projects-subtitle">
@@ -447,40 +422,27 @@ function Projects() {
           </p>
         </motion.div>
 
+        {/* Filter buttons — no layout prop, no layoutId, just CSS transitions */}
         <motion.div
           className="projects-filters"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={VP}
-          transition={{ duration: 0.5, delay: 0.2, ease: EASE }}
+          transition={{ duration: 0.45, delay: 0.2, ease: EASE }}
         >
           {filters.map((f) => (
-            <motion.button
+            <button
               key={f}
               className={`filter-btn ${active === f ? "filter-btn--active" : ""}`}
               onClick={() => setActive(f)}
-              whileHover={{ scale: 1.06, y: -2 }}
-              whileTap={{ scale: 0.94 }}
-              layout
             >
               {f}
-              {active === f && (
-                <motion.span
-                  layoutId="filter-pill"
-                  style={{
-                    position: "absolute", inset: 0, borderRadius: "inherit",
-                    background: "rgba(0,247,255,0.1)", border: "1px solid rgba(0,247,255,0.3)",
-                    zIndex: 0,
-                  }}
-                  transition={{ type: "spring", stiffness: 340, damping: 28 }}
-                />
-              )}
-            </motion.button>
+            </button>
           ))}
         </motion.div>
 
-        <motion.div className="projects-grid" layout>
-          <AnimatePresence mode="popLayout">
+        <AnimatePresence mode="popLayout">
+          <motion.div className="projects-grid" key={active}>
             {filtered.map((project, i) => (
               <ProjectCard
                 key={project.name}
@@ -489,12 +451,11 @@ function Projects() {
                 onClick={() => setSelected(project)}
               />
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </motion.div>
+        </AnimatePresence>
 
       </div>
 
-      {/* Sidebar portal */}
       <AnimatePresence>
         {selected && (
           <ProjectSidebar project={selected} onClose={() => setSelected(null)} />

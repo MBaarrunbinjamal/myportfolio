@@ -9,9 +9,9 @@
 .abouts {
   width: 100%;
   max-width: 1200px;
-  background: linear-gradient(135deg, rgba(5, 138, 148, 0.18), rgba(5, 138, 148, 0.04));
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255,255,255, 0.00);
+  backdrop-filter: blur(0px) saturate(100%);
+  -webkit-backdrop-filter: blur(19px) saturate(100%);
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
@@ -95,11 +95,11 @@
   width: 100%;
 }
 
-/* ─── MA card ───────────────────────────────────────────────── */
+
 .ma {
   width: 100%;
-  min-width: 0; /* crucial — prevents grid children from overflowing */
-  background: linear-gradient(135deg, rgba(5, 138, 148, 0.22), rgba(5, 138, 148, 0.05));
+  min-width: 0; 
+  background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-radius: 14px;
@@ -182,7 +182,7 @@
 }
 
 .btn-download {
-  background: linear-gradient(135deg, #169cb1, #095e61);
+background: linear-gradient(135deg, rgb(12, 145, 155), rgba(1, 21, 22, 0.932));
   color: #ffffff;
   box-shadow: 0 4px 18px rgba(22, 156, 177, 0.35);
 }
@@ -209,7 +209,7 @@
 }
 
 .stat-card {
-  background: linear-gradient(135deg, rgba(5, 138, 148, 0.2), rgba(5, 138, 148, 0.05));
+background: linear-gradient(135deg, rgb(3, 67, 71), rgba(1, 21, 22, 0.932));
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 16px;
   padding: 22px 18px;

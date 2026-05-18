@@ -188,7 +188,7 @@ const Hero = ({ children }) => {
             <motion.h1 className="hero-title" variants={fadeUp}>
               Full Stack Web Developer
               <motion.span
-                style={{ display: "block", height: 2, background: "linear-gradient(90deg,#00f7ff,#0a3cff)", originX: 0, borderRadius: 2 }}
+                style={{ display: "block", height: 2, background: "linear-gradient(90deg,#00f7ff,#0b9488)", originX: 0, borderRadius: 2 }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ delay: 1.1, duration: 0.8, ease: EASE }}
@@ -252,26 +252,58 @@ const Hero = ({ children }) => {
             </motion.div>
           </motion.div>
 
+       {/* ── Hero Right ─────────────────────────────────────────── */}
           <motion.div
             className="hero-right"
             variants={fadeRight}
             initial="hidden"
             animate="show"
           >
+            {/* Breathing glow behind circle */}
+            <div className="glow-pulse" />
+
+            {/* Orbit ring 1 — spins clockwise, carries dot */}
+            <div className="orbit-ring orbit-ring--spin1">
+              <div className="orbit-dot orbit-dot--1" />
+            </div>
+
+            {/* Orbit ring 2 — spins counter-clockwise, carries dot */}
+            <div className="orbit-ring orbit-ring--spin2">
+              <div className="orbit-dot orbit-dot--2" />
+            </div>
+
+            {/* Tech corner brackets */}
+            <div className="tech-bracket tech-bracket--tl" />
+            <div className="tech-bracket tech-bracket--tr" />
+            <div className="tech-bracket tech-bracket--bl" />
+            <div className="tech-bracket tech-bracket--br" />
+
+            {/* Main circle */}
             <motion.div
               className="bigcircle"
               animate={{ rotate: 360 }}
               transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
             />
+
+            {/* Shimmer overlay on circle */}
             <motion.div
               style={{
-                position: "absolute", inset: 0, borderRadius: "50%",
-                background: "radial-gradient(circle at 60% 40%, rgba(0,247,255,0.07) 0%, transparent 70%)",
-                zIndex: 5
+                position: "absolute",
+                borderRadius: "50%",
+                width: "clamp(150px, 33vw, 365px)",
+                height: "clamp(150px, 33vw, 365px)",
+                bottom: "clamp(20px, 3vw, 48px)",
+                left: "50%",
+                transform: "translateX(-50%)",
+                background: "radial-gradient(circle at 60% 35%, rgba(0,247,255,0.10) 0%, transparent 65%)",
+                zIndex: 5,
+                pointerEvents: "none",
               }}
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
+
+            {/* Hero image */}
             <img src="hero-image.PNG" alt="Hero" />
           </motion.div>
         </div>
