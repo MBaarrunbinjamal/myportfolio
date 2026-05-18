@@ -1,5 +1,5 @@
 import "./Skills.css";
-import { motion, useMotionValue, useSpring, animate } from "framer-motion";
+import { motion,  animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const EASE = [0.22, 1, 0.36, 1];
