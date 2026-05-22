@@ -290,8 +290,10 @@ function ProjectCard({ project, index, onClick }) {
   const [hovered, setHovered] = useState(false);
 
   const isBloomingPetals = project.name === "Blooming Petals";
-  const showLive = isBloomingPetals && project.live;
-  const showGithub = !isBloomingPetals && project.status === "live" && project.github;
+  const isCOSMOS = project.name === "COSMOS";
+  const showLive = isBloomingPetals && project.live && !isCOSMOS; // Only show live link for Blooming Petals, hide for COSMOS
+
+  const showGithub = !isBloomingPetals && !isCOSMOS && project.status === "live" && project.github;
 
   return (
     <motion.div
