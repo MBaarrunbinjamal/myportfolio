@@ -82,8 +82,10 @@ const projects = [
     name: "COSMOS",
     desc: "Interactive 3D deep space explorer with gesture & voice control.",
     detail:
- "COSMOS is an immersive browser-based 3D space experience built with Three.js. Explore real 3D models of Saturn and a Black Hole with a cinematic nebula environment, 3000-star field, and accretion disk VFX. Control the camera using MediaPipe hand gestures (open palm to zoom, fist to zoom out, peace sign to switch scenes), voice commands, or keyboard — all with a live ambient soundtrack.",    stack:["Three.js", "MediaPipe", "WebGL", "Web Speech API", "JavaScript"],
+ "COSMOS is an immersive browser-based 3D space experience built with Three.js. Explore real 3D models of Saturn and a Black Hole with a cinematic nebula environment, 3000-star field, and accretion disk VFX. Control the camera using MediaPipe hand gestures (open palm to zoom, fist to zoom out, peace sign to switch scenes), voice commands, or keyboard — all with a live ambient soundtrack.",
+     stack:["Three.js", "MediaPipe", "WebGL", "Web Speech API", "JavaScript"],
     category: "3D",
+    
     status: "live",
     live: "https://cosmosbaarrun.netlify.app/",
     github: null,
@@ -291,8 +293,7 @@ function ProjectCard({ project, index, onClick }) {
 
   const isBloomingPetals = project.name === "Blooming Petals";
   const isCOSMOS = project.name === "COSMOS";
-  const showLive = isBloomingPetals && project.live && isCOSMOS; 
-
+const showLive = (isBloomingPetals || isCOSMOS) && project.live;
   const showGithub = !isBloomingPetals && !isCOSMOS && project.status === "live" && project.github;
 
   return (
