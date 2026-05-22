@@ -87,7 +87,7 @@ const projects = [
     status: "live",
     live: "https://cosmosbaarrun.netlify.app/",
     github: null,
-    images: ["cosmos1.PNG", "cosmos2.PNG", "cosmos3.PNG", "cosmos4.PNG"],
+    images: ["cosmo1.PNG", "cosmo2.PNG", "cosmo3.PNG", "cosmo4.PNG"],
   },
 ];
 
