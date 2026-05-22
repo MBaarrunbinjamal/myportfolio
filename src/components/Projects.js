@@ -78,9 +78,20 @@ const projects = [
     github: null,
     images: [],
   },
+    {
+    name: "COSMOS",
+    desc: "Interactive 3D deep space explorer with gesture & voice control.",
+    detail:
+ "COSMOS is an immersive browser-based 3D space experience built with Three.js. Explore real 3D models of Saturn and a Black Hole with a cinematic nebula environment, 3000-star field, and accretion disk VFX. Control the camera using MediaPipe hand gestures (open palm to zoom, fist to zoom out, peace sign to switch scenes), voice commands, or keyboard — all with a live ambient soundtrack.",    stack:["Three.js", "MediaPipe", "WebGL", "Web Speech API", "JavaScript"],
+    category: "3D",
+    status: "live",
+    live: "https://cosmosbaarrun.netlify.app/",
+    github: null,
+    images: ["cosmos1.png", "cosmos2.png", "cosmos3.png", "cosmos4.png"],
+  },
 ];
 
-const filters = ["All", "Frontend", "Backend", "AI", "MERN"];
+const filters = ["All", "Frontend", "Backend", "AI", "MERN", "3D"];
 
 // Clean fade+slide up — no scale pop, no jitter
 const cardVariants = {
