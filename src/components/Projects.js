@@ -291,7 +291,7 @@ function ProjectCard({ project, index, onClick }) {
 
   const isBloomingPetals = project.name === "Blooming Petals";
   const isCOSMOS = project.name === "COSMOS";
-  const showLive = isBloomingPetals && project.live && !isCOSMOS; // Only show live link for Blooming Petals, hide for COSMOS
+  const showLive = isBloomingPetals && project.live && isCOSMOS; 
 
   const showGithub = !isBloomingPetals && !isCOSMOS && project.status === "live" && project.github;
 
