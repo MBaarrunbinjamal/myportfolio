@@ -28,7 +28,12 @@ const projects = [
     status: "live",
     live: null,
     github: "https://github.com/MBaarrunbinjamal/Elegant-saloon.git",
-    images: ["Elegantsaloon.png", "Elegant2.png", "Elegant3.png", "Elegant4.png"],
+    images: [
+      "Elegantsaloon.png",
+      "Elegant2.png",
+      "Elegant3.png",
+      "Elegant4.png",
+    ],
   },
   {
     name: "Propello",
@@ -78,14 +83,14 @@ const projects = [
     github: null,
     images: [],
   },
-    {
+  {
     name: "COSMOS",
     desc: "Interactive 3D deep space explorer with gesture & voice control.",
     detail:
- "COSMOS is an immersive browser-based 3D space experience built with Three.js. Explore real 3D models of Saturn and a Black Hole with a cinematic nebula environment, 3000-star field, and accretion disk VFX. Control the camera using MediaPipe hand gestures (open palm to zoom, fist to zoom out, peace sign to switch scenes), voice commands, or keyboard — all with a live ambient soundtrack.",
-     stack:["Three.js", "MediaPipe", "WebGL", "Web Speech API", "JavaScript"],
+      "COSMOS is an immersive browser-based 3D space experience built with Three.js. Explore real 3D models of Saturn and a Black Hole with a cinematic nebula environment, 3000-star field, and accretion disk VFX. Control the camera using MediaPipe hand gestures (open palm to zoom, fist to zoom out, peace sign to switch scenes), voice commands, or keyboard — all with a live ambient soundtrack.",
+    stack: ["Three.js", "MediaPipe", "WebGL", "Web Speech API", "JavaScript"],
     category: "3D",
-    
+
     status: "live",
     live: "https://cosmosbaarrun.netlify.app/",
     github: null,
@@ -111,7 +116,14 @@ const cardVariants = {
 };
 
 const ExternalIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+  >
     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
     <polyline points="15 3 21 3 21 9" />
     <line x1="10" y1="14" x2="21" y2="3" />
@@ -119,13 +131,27 @@ const ExternalIcon = () => (
 );
 
 const GithubIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+  >
     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
   </svg>
 );
 
 const CloseIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+  >
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
@@ -135,20 +161,29 @@ const CloseIcon = () => (
 function ProjectSidebar({ project, onClose }) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, []);
 
   useEffect(() => {
-    const handler = (e) => { if (e.key === "Escape") onClose(); };
+    const handler = (e) => {
+      if (e.key === "Escape") onClose();
+    };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [onClose]);
 
   const isBloomingPetals = project.name === "Blooming Petals";
-  const showLive = isBloomingPetals && project.live;
-  const showGithub = !isBloomingPetals && project.status === "live" && project.github;
+  const isCOSMOS = project.name === "COSMOS";
+ const showLive = (isBloomingPetals || isCOSMOS) && project.live;
+  const showGithub =
+    !isBloomingPetals && !isCOSMOS && project.status === "live" && project.github;
 
-  const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
+  const stagger = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.06 } },
+  };
   const item = {
     hidden: { opacity: 0, x: 18 },
     show: { opacity: 1, x: 0, transition: { duration: 0.4, ease: EASE } },
@@ -202,7 +237,11 @@ function ProjectSidebar({ project, onClose }) {
                 <motion.span
                   className="coming-badge"
                   animate={{ opacity: [0.6, 1, 0.6] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                 >
                   Coming Soon
                 </motion.span>
@@ -211,13 +250,17 @@ function ProjectSidebar({ project, onClose }) {
           </motion.div>
 
           <motion.div variants={item} className="sidebar-divider" />
-          <motion.p variants={item} className="sidebar-detail">{project.detail}</motion.p>
+          <motion.p variants={item} className="sidebar-detail">
+            {project.detail}
+          </motion.p>
 
           <motion.div variants={item}>
             <p className="sidebar-label">Tech Stack</p>
             <div className="sidebar-stack">
               {project.stack.map((s) => (
-                <span key={s} className="project-tag">{s}</span>
+                <span key={s} className="project-tag">
+                  {s}
+                </span>
               ))}
             </div>
           </motion.div>
@@ -232,24 +275,33 @@ function ProjectSidebar({ project, onClose }) {
                     className="sidebar-img-wrap"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + idx * 0.08, duration: 0.4, ease: EASE }}
+                    transition={{
+                      delay: 0.2 + idx * 0.08,
+                      duration: 0.4,
+                      ease: EASE,
+                    }}
                   >
-                    <img src={src} alt={`${project.name} screenshot ${idx + 1}`} className="sidebar-img" />
+                    <img
+                      src={src}
+                      alt={`${project.name} screenshot ${idx + 1}`}
+                      className="sidebar-img"
+                    />
                   </motion.div>
                 ))}
               </div>
             </motion.div>
           )}
 
-          {(!project.images || project.images.length === 0) && project.status !== "coming" && (
-            <motion.div variants={item}>
-              <p className="sidebar-label">Gallery</p>
-              <div className="sidebar-gallery-placeholder">
-                <span className="sidebar-placeholder-icon">🖼️</span>
-                <p>Screenshots coming soon</p>
-              </div>
-            </motion.div>
-          )}
+          {(!project.images || project.images.length === 0) &&
+            project.status !== "coming" && (
+              <motion.div variants={item}>
+                <p className="sidebar-label">Gallery</p>
+                <div className="sidebar-gallery-placeholder">
+                  <span className="sidebar-placeholder-icon">🖼️</span>
+                  <p>Screenshots coming soon</p>
+                </div>
+              </motion.div>
+            )}
 
           {(showLive || showGithub) && (
             <motion.div variants={item} className="sidebar-links">
@@ -293,8 +345,12 @@ function ProjectCard({ project, index, onClick }) {
 
   const isBloomingPetals = project.name === "Blooming Petals";
   const isCOSMOS = project.name === "COSMOS";
-const showLive = (isBloomingPetals || isCOSMOS) && project.live;
-  const showGithub = !isBloomingPetals && !isCOSMOS && project.status === "live" && project.github;
+  const showLive = (isBloomingPetals || isCOSMOS) && project.live;
+  const showGithub =
+    !isBloomingPetals &&
+    !isCOSMOS &&
+    project.status === "live" &&
+    project.github;
 
   return (
     <motion.div
@@ -317,9 +373,12 @@ const showLive = (isBloomingPetals || isCOSMOS) && project.live;
       <motion.div
         style={{
           position: "absolute",
-          top: 0, left: 0, right: 0,
+          top: 0,
+          left: 0,
+          right: 0,
           height: "1px",
-          background: "linear-gradient(90deg, transparent, rgba(22,156,177,0.6), transparent)",
+          background:
+            "linear-gradient(90deg, transparent, rgba(22,156,177,0.6), transparent)",
           pointerEvents: "none",
         }}
         animate={{ opacity: hovered ? 1 : 0 }}
@@ -336,9 +395,7 @@ const showLive = (isBloomingPetals || isCOSMOS) && project.live;
       </motion.div>
 
       <div className="project-card-top">
-        <div className="project-card-icon">
-          {project.name.charAt(0)}
-        </div>
+        <div className="project-card-icon">{project.name.charAt(0)}</div>
         {project.status === "coming" && (
           <motion.span
             className="coming-badge"
@@ -355,15 +412,14 @@ const showLive = (isBloomingPetals || isCOSMOS) && project.live;
 
       <div className="project-stack">
         {project.stack.map((s) => (
-          <span key={s} className="project-tag">{s}</span>
+          <span key={s} className="project-tag">
+            {s}
+          </span>
         ))}
       </div>
 
       {(showLive || showGithub) && (
-        <div
-          className="project-links"
-          onClick={(e) => e.stopPropagation()}
-        >
+        <div className="project-links" onClick={(e) => e.stopPropagation()}>
           {showLive && (
             <motion.a
               href={project.live}
@@ -400,12 +456,12 @@ const showLive = (isBloomingPetals || isCOSMOS) && project.live;
 function Projects() {
   const [active, setActive] = useState("All");
   const [selected, setSelected] = useState(null);
-  const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
+  const filtered =
+    active === "All" ? projects : projects.filter((p) => p.category === active);
 
   return (
     <section id="projects" className="projects-section">
       <div className="projects-wrap">
-
         <motion.div
           className="projects-header"
           initial={{ opacity: 0, y: 24 }}
@@ -422,7 +478,9 @@ function Projects() {
           >
             What I've Built
           </motion.span>
-          <h2 className="projects-title">My <span className="accent">Projects</span></h2>
+          <h2 className="projects-title">
+            My <span className="accent">Projects</span>
+          </h2>
           <motion.div
             className="projects-hr"
             initial={{ scaleX: 0 }}
@@ -432,7 +490,8 @@ function Projects() {
             style={{ originX: 0.5 }}
           />
           <p className="projects-subtitle">
-            A selection of real-world projects spanning frontend, backend, AI, and full-stack development.
+            A selection of real-world projects spanning frontend, backend, AI,
+            and full-stack development.
           </p>
         </motion.div>
 
@@ -467,12 +526,14 @@ function Projects() {
             ))}
           </motion.div>
         </AnimatePresence>
-
       </div>
 
       <AnimatePresence>
         {selected && (
-          <ProjectSidebar project={selected} onClose={() => setSelected(null)} />
+          <ProjectSidebar
+            project={selected}
+            onClose={() => setSelected(null)}
+          />
         )}
       </AnimatePresence>
     </section>
