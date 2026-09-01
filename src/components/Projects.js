@@ -345,10 +345,12 @@ function ProjectCard({ project, index, onClick }) {
 
   const isBloomingPetals = project.name === "Blooming Petals";
   const isCOSMOS = project.name === "COSMOS";
-  const showLive = (isBloomingPetals || isCOSMOS) && project.live;
+  const isfitnessTracker = project.name === "Fitness-tracker";
+  const showLive = (isBloomingPetals || isCOSMOS || isfitnessTracker) && project.live;
   const showGithub =
     !isBloomingPetals &&
     !isCOSMOS &&
+    !isfitnessTracker &&
     project.status === "live" &&
     project.github;
 
