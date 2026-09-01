@@ -57,7 +57,7 @@ const projects = [
     status: "live",
     live: null,
     github: "https://github.com/MBaarrunbinjamal/Ep2025.git",
-    images: ["fit1.PNG", "fit2.PNG", "fit3.PNG", "fit4.PNG", "fit5.PNG"],
+    images: [],
   },
   {
     name: "Fitness-tracker",
@@ -69,7 +69,7 @@ const projects = [
     status: "live",
     live:"https://fitfront-two.vercel.app/",
     github: "https://github.com/MBaarrunbinjamal/fitness.git",
-    images: ["fit1.PNG", "fit2.PNG", "fit3.PNG", "fit4.PNG", "fit5.PNG"],
+    images: ["fit1.png", "fit2.png", "fit3.png", "fit4.png", "fit5.png"],
   },
   {
     name: "MERN Project II",
